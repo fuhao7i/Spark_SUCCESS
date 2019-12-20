@@ -1,0 +1,27 @@
+hadoop fs -put /Desktop/dianying.txt /fuhao/dianying
+
+hadoop fs -put /home/hadoop/Desktop/dianying.txt /fuhao/dianying
+
+hadoop fs -cat /fuhao/dianying/dianying.txt
+
+hadoop fs -get /fuhao/dianying/dianying.txt /home/hadoop/Desktop
+
+select controy from top250 into outfile '/var/lib/mysql-files/top250-c.txt';
+
+val file = spark.sparkContext.textFile("file:///home/hadoop/Desktop/top250-c.txt")
+
+
+val count = file.flatMap(line=>line.split(" ")).map(word=>(word,1)).reduceByKey((a,b)=>a+b)
+
+
+count.collect();
+
+
+
+count.saveAsTextFile("file:///home/hadoop/Desktop/topcc.txt")
+
+
+http://pyecharts.org/#/zh-cn/web_flask
+
+
+https://blog.csdn.net/L1542334210/article/details/102678144
